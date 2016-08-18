@@ -30,8 +30,9 @@ class ApiController extends Controller
      */
     public function ShowerGet($device_code, $state)
     {
+
         $this->device->FindDevicesByCode($device_code)
-            ->update($state);
+            ->update(['state'=>$state]);
 //        event(new ShowerUpdate($this->showers));
         return 'succes';
     }

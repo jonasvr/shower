@@ -30,6 +30,15 @@ Route::group(['prefix' => 'profile'], function(){
     Route::post('/addDevice', ['as'=>'addDevice', 'uses' => 'KotController@addDevice']);
     Route::get('/accept/{id}', ['as'=>'accept', 'uses' => 'KotController@accept']);
     Route::get('/decline/{id}', ['as'=>'decline', 'uses' => 'KotController@decline']);
-
+    Route::get('/delete/{id}', ['as'=>'delete', 'uses' => 'KotController@deleteHabitant']);
 });
 
+
+Route::group(['prefix' => 'api','middleware' => 'api'], function () {
+    Route::get('shower/{device_id}/{state}', 'ApiController@showerGet');
+});
+
+Route::group(['prefix'=>'calendar'],function(){
+    Route::get('/{id}',['as'=>'calendar','uses'=>'CalendarController@Calendar']);
+    Route::post('/reserve',['as'=>'reserve','uses'=>'CalendarController@reserve']);
+});

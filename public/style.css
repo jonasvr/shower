@@ -5,3 +5,10 @@
 .font-30{
     font-size:30px;
 }
+.fc-unthemed .fc-today {
+    background: #375a7f;
+}
+
+.fc-unthemed .fc-popover .fc-header, .fc-unthemed hr{
+    background: #464545;
+}

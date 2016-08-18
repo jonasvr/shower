@@ -14,6 +14,7 @@
                 @include('profile.partial.requests')
             @endif
             @include('profile.devices.showers')
+            @include('profile.partial.habitants')
             {{--{{dd($devices)}}--}}
         </div>
     </div>

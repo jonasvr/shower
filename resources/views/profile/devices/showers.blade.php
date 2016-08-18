@@ -1,17 +1,18 @@
 <div class="row">
-
     <h1>showers</h1>
     @foreach($devices as $key => $item)
-        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
-            <div class="panel  {{ ($item->state == 1 ? 'panel-success' :'panel-danger')}}">
+        {{--{{dd($item)}}--}}
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+            <a href="{{URL::route('calendar', ['id'=>$item->id]) }}">
+            <div class="panel  {{ ($item->state == 1 && $item->res == 1 ? 'panel-success' :'panel-danger')}}">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3 col-md-3">
-                            <i class="fa {{ ($item->state == 1 ? 'fa-unlock' :'fa-lock')}} fa-5x"></i>
+                            <i class="fa {{ ($item->state == 1 && $item->res == 1? 'fa-unlock' :'fa-lock')}} fa-4x"></i>
                         </div>
                         <div class="col-xs-9 col-md-9 text-right">
                             <div class="font-40">
-                                @if($item->state == 1)
+                                @if($item->state == 1 && $item->res == 1)
                                     free
                                 @else
                                     taken
@@ -24,8 +25,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+            </a>
         </div>
     @endforeach
 

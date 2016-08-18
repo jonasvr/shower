@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,6 +11,7 @@ use App\User;
 use App\Koten;
 use App\Device;
 use App\KotRequest;
+use App\Reservatie;
 use Auth;
 use Illuminate\Support\Facades\URL;
 use Redirect;
@@ -38,23 +40,30 @@ class ProfileController extends Controller
     protected $kr;
 
     /**
+     * @var Reservatie
+     */
+    protected $res;
+    /**
      * ProfileController constructor.
      * @param User $user
      * @param Koten $koten
      * @param Device $devices
      * @param KotRequest $kr
+     * @param Reservatie $res
      */
     public function __construct(
         User $user,
         Koten $koten,
         Device $devices,
-        KotRequest $kr
+        KotRequest $kr,
+        Reservatie $res
     )
     {
         $this->user = $user;
         $this->koten = $koten;
         $this->device = $devices;
         $this->kr = $kr;
+        $this->res = $res;
     }
 
     /**
@@ -88,14 +97,40 @@ class ProfileController extends Controller
             ->first();
         $kr = $this->kr->UserRequests($kot->id)
             ->get();
+        $habitants = $this->user->where('koten_id',Auth::user()->koten_id)
+            ->get();
         $devices = $this->device->FindDevices($kot->id)
             ->get();
+
+        $devices = $this->checkReserve($devices);
+
         $data = [
             'kot' => $kot,
             'devices' => $devices,
-            'kr' => $kr
+            'kr' => $kr,
+            'habitants' => $habitants,
         ];
         return view('profile.profile')->with($data);
     }
 
+
+    public function checkReserve($devices)
+    {
+        $now = Carbon::now();
+        $end = $now->copy()->subMinutes(10);
+        foreach ($devices as $key => $item)
+        {
+            $item['res'] = 1;
+            $res = $this->res->where('device_id',$item->id)->get();
+            foreach ($res as $key => $item2)
+            {
+                if($item2->start < $now && $item2->start > $end)
+                {
+                    $item['res'] = 0;
+                }
+            }
+        }
+
+        return $devices;
+    }
 }

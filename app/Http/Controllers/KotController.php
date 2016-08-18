@@ -133,4 +133,13 @@ class KotController extends Controller
 
         return redirect()->route('getProfile');
     }
+
+
+    public function deleteHabitant($id)
+    {
+        $this->user->where('id',$id)->koten_id = 0;
+        $this->user->save();
+
+        return back();
+    }
 }
