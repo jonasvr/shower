@@ -21,8 +21,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        $('.fc-today').css("background-color", "yellow");
-    </script>
 @endsection

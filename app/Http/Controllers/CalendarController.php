@@ -86,6 +86,13 @@ class CalendarController extends Controller
         return back();
     }
 
+    public function cancel($id)
+    {
+        $this->res->where('id',$id)->delete();
+
+        return back();
+    }
+
     ////////////////Helpers//////////////////
 
     public function createEvent($item)

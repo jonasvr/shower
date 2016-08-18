@@ -15,6 +15,8 @@
             @endif
             @include('profile.devices.showers')
             @include('profile.partial.habitants')
+            @include('profile.partial.myReservations')
+
             {{--{{dd($devices)}}--}}
         </div>
     </div>

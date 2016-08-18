@@ -101,14 +101,19 @@ class ProfileController extends Controller
             ->get();
         $devices = $this->device->FindDevices($kot->id)
             ->get();
-
         $devices = $this->checkReserve($devices);
-
+        $res = $this->res->where('reservaties.user_id',Auth::id())
+            ->join('devices','devices.id','=','reservaties.device_id')
+            ->orderBy('reservaties.start')
+            ->where('reservaties.start','>',Carbon::now())
+            ->select('reservaties.id', 'reservaties.start', 'devices.name')
+            ->get();
         $data = [
             'kot' => $kot,
             'devices' => $devices,
             'kr' => $kr,
             'habitants' => $habitants,
+            'res' => $res,
         ];
         return view('profile.profile')->with($data);
     }

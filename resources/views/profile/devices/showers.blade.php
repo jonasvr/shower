@@ -1,5 +1,6 @@
 <div class="row">
     <h1>showers</h1>
+    <hr>
     @foreach($devices as $key => $item)
         {{--{{dd($item)}}--}}
         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">

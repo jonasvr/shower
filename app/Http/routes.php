@@ -41,4 +41,5 @@ Route::group(['prefix' => 'api','middleware' => 'api'], function () {
 Route::group(['prefix'=>'calendar'],function(){
     Route::get('/{id}',['as'=>'calendar','uses'=>'CalendarController@Calendar']);
     Route::post('/reserve',['as'=>'reserve','uses'=>'CalendarController@reserve']);
+    Route::get('cancel/{id}',['as'=>'cancel','uses'=>'CalendarController@cancel']);
 });
