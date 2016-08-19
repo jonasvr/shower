@@ -11,9 +11,11 @@ use App\Http\Requests\AddKotRequest;
 use App\User;
 use App\Koten;
 use App\Device;
+use App\Reservatie;
 use App\KotRequest;
 use Auth;
 use Redirect;
+use Carbon\Carbon;
 
 use App\Jobs\NotifyAccept;
 use App\Jobs\NotifyRequest;
@@ -36,31 +38,65 @@ class KotController extends Controller
     protected $device;
 
     /**
+     * @var Reservatie
+     */
+    protected $res;
+    /**
      * @var KotRequest
      */
     protected $kr;
 
     /**
-     * ProfileController constructor.
+     * KotController constructor.
      * @param User $user
      * @param Koten $koten
      * @param Device $devices
+     * @param Reservatie $res
      * @param KotRequest $kr
      */
     public function __construct(
         User $user,
         Koten $koten,
         Device $devices,
+        Reservatie $res,
         KotRequest $kr
     )
     {
         $this->user = $user;
         $this->koten = $koten;
         $this->device = $devices;
+        $this->res = $res;
         $this->kr = $kr;
     }
 
-
+    /**
+     * @return $this
+     */
+    public function admin()
+    {
+        $kot = $this->koten->FindKot(Auth::user()->koten_id)
+        ->first();
+        $devices=[];
+        if(Auth::user()->koten_id){
+            $devices = $this->device->FindDevices($kot->id)
+                ->get();
+        }
+        $devices = $this->checkReserve($devices);
+        $res = $this->res->GetState()
+            ->get();
+        $kr = [];
+        if(Auth::user()->admin){
+            $kr = $this->kr->UserRequests($kot->id)
+                ->get();
+        }
+        $data = [
+            'kot' => $kot,
+            'devices' => $devices,
+            'res' => $res,
+            'kr' => $kr,
+        ];
+        return view('admin.admin')->with($data);
+    }
     /**
      * @param AddKotRequest $request
      * @return mixed
@@ -76,6 +112,8 @@ class KotController extends Controller
         ];
         $kr = $this->kr->create($input);
         $user = Auth::user();
+        $user->steps = 1;
+        $user->save();
         $admin = $this->user->admin($kr->koten_id)->first();
 
         $this->dispatch(new NotifyRequest($kr->id,$user,$admin));
@@ -90,16 +128,13 @@ class KotController extends Controller
     public function addDevice(AddDeviceRequest $request)
     {
         $data = $request->all();
-        $device = $this->device->where('device_code',$data['device_code'])->first();
-        if(count($device)){
-            $kot = $this->koten->FindKot(Auth::user()->koten_id)->first();
-            $data['koten_id'] =     $kot->id;
-            $device->update($data);
-        }else{
-            $error = ['device_code'=>"The device ID you have given isn't correct"];
-        }
+        unset($data['_token']);
+        $kot = $this->koten->FindKot(Auth::user()->koten_id)->first();
+        $data['koten_id'] = $kot->id;
+        $this->device->where('device_code',$request->device_code)->update($data);
+        $with['success'] = "The device is succesfully added.";
 
-        return redirect()->route('getProfile');
+        return back()->with($with);
     }
 
     /**
@@ -110,10 +145,15 @@ class KotController extends Controller
     {
         $request = $this->kr->find($id)->first();
         $kot = $this->koten->find($request->koten_id)->first();
-        $user = $this->user->where('id',$request->user_id)->first();
-        $user->update(['koten_id' => $kot->id]);
-        $this->dispatch(new NotifyAccept($user, $kot->code,true));
-        $request->delete();
+        if($this->permission($kot)){
+            $user = $this->user->where('id',$request->user_id)->first();
+            $user->update(['koten_id' => $kot->id]);
+            $this->dispatch(new NotifyAccept($user, $kot->code,true));
+            $request->delete();
+        }else{
+            $message['error'] =['unautherised'=>"you can't accept this user."];
+        }
+
 
         return redirect()->route('getProfile');
 
@@ -127,9 +167,13 @@ class KotController extends Controller
     {
         $request = $this->kr->find($id)->first();
         $kot = $this->koten->find($request->koten_id)->first();
-        $user = $this->user->find($request->user_id)->first();
-        $this->dispatch(new NotifyAccept($user, $kot->code,false));
-        $request->delete();
+        if($this->permission($kot)) {
+            $user = $this->user->find($request->user_id)->first();
+            $this->dispatch(new NotifyAccept($user, $kot->code, false));
+            $request->delete();
+        }else{
+            $message['error'] =['unautherised'=>"you can't delete this user."];
+        }
 
         return redirect()->route('getProfile');
     }
@@ -141,5 +185,41 @@ class KotController extends Controller
         $this->user->save();
 
         return back();
+    }
+
+    /////HELPER////////////
+
+    public function permission($kot)
+    {
+        if(Auth::user()->koten_id == $kot->id && Auth::user()->admin) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /////////////////////helpers///////////////////
+    /**
+     * @param $devices
+     * @return mixed
+     */
+    public function checkReserve($devices)
+    {
+        $now = Carbon::now();
+        $end = $now->copy()->subMinutes(10);
+        foreach ($devices as $key => $item)
+        {
+            $item['res'] = 1;
+            $res = $this->res->where('device_id',$item->id)->get();
+            foreach ($res as $key => $item2)
+            {
+                if($item2->start < $now && $item2->start > $end)
+                {
+                    $item['res'] = 0;
+                }
+            }
+        }
+
+        return $devices;
     }
 }

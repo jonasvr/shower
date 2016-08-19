@@ -24,7 +24,8 @@ class AddDeviceRequest extends Request
     public function rules()
     {
         return [
-            'device_code' => 'required',
+            'device_code' => 'required|exists:devices,device_code,koten_id,0',
+            'name' => 'required',
         ];
     }
 }

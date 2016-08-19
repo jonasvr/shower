@@ -29,7 +29,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/info';
+    protected $redirectTo = '/profile';
 
     /**
      * AuthController constructor.

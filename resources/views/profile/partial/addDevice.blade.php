@@ -1,7 +1,9 @@
-<div class="row">
+<div class="jumbotron  row">
+    <h2>Add device</h2>
+    <hr>
     <div class="col-md-offset-2 col-md-8 form-horizontal">
         <div class="panel panel-default">
-            <div class="panel-heading">Add device</div>
+            {{--<div class="panel-heading">Add device</div>--}}
             <div class="panel-body">
             {{ Form::open(array('url' => URL::route('addDevice'), 'method' => 'Post')) }}
             <div class="form-group {{ $errors->has('device_code') ? ' has-error' : '' }}">
@@ -36,4 +38,3 @@
         </div>
     </div>
     </div>
-</div>

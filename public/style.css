@@ -12,3 +12,16 @@
 .fc-unthemed .fc-popover .fc-header, .fc-unthemed hr{
     background: #464545;
 }
+
+.max-height{
+    max-height:450px;
+}
+
+.progress{
+    height:20px;
+}
+
+.progress .progress-bar {
+    font-size: 15px;
+    line-height: 18px;
+}

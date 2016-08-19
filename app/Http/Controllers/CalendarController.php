@@ -130,7 +130,7 @@ class CalendarController extends Controller
                 'right' => 'month,basicDay'
             ],
             'timeFormat' => 'H:mm',
-           'eventColor' => '#378006'
+           'eventColor' => '#00bc8c'
         ])->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
 //            'viewRender' => 'function() {alert("Callbacks!");}'
         ]);

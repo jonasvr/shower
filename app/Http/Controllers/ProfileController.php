@@ -13,6 +13,7 @@ use App\Device;
 use App\KotRequest;
 use App\Reservatie;
 use Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\URL;
 use Redirect;
 use App\Http\Requests\InfoRequest;
@@ -84,8 +85,29 @@ class ProfileController extends Controller
         unset($data['_token']);
         $this->koten->where('id',Auth::user()->koten_id)
             ->update($data);
-
+        $user = Auth::user();
+        $user ->steps = 1;
+        $user->save();
         return redirect()->route('getProfile');
+    }
+
+    public function addInfo2(Request $request)
+    {
+        $user = Auth::user();
+            $user->sex = $request->sex;
+        $user->save();
+
+        $file = Input::file('photo');
+        $rand = rand(11111,99999);
+        $file_name = $rand.'-'.$file->getClientOriginalName();
+        if ($file->move('img/users/',$file_name))
+        {
+            return redirect()->route('crop')->with('image',$file_name);
+        }
+        else
+        {
+            return "Error uploading file";
+        }
     }
 
     /**
@@ -95,30 +117,30 @@ class ProfileController extends Controller
     {
         $kot = $this->koten->FindKot(Auth::user()->koten_id)
             ->first();
-        $kr = $this->kr->UserRequests($kot->id)
-            ->get();
         $habitants = $this->user->where('koten_id',Auth::user()->koten_id)
             ->get();
-        $devices = $this->device->FindDevices($kot->id)
-            ->get();
+        $devices=[];
+        if(Auth::user()->koten_id){
+            $devices = $this->device->FindDevices($kot->id)
+                ->get();
+        }
         $devices = $this->checkReserve($devices);
-        $res = $this->res->where('reservaties.user_id',Auth::id())
-            ->join('devices','devices.id','=','reservaties.device_id')
-            ->orderBy('reservaties.start')
-            ->where('reservaties.start','>',Carbon::now())
-            ->select('reservaties.id', 'reservaties.start', 'devices.name')
+        $res = $this->res->GetState()
             ->get();
         $data = [
             'kot' => $kot,
             'devices' => $devices,
-            'kr' => $kr,
             'habitants' => $habitants,
             'res' => $res,
         ];
         return view('profile.profile')->with($data);
     }
 
-
+    /////////////////////helpers///////////////////
+    /**
+     * @param $devices
+     * @return mixed
+     */
     public function checkReserve($devices)
     {
         $now = Carbon::now();

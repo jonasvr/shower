@@ -1,6 +1,6 @@
 @if(count($kr))
-<div class="row">
-    <h1>Habitants</h1>
+<div class="jumbotron row">
+    <h2>Kot requests</h2>
     @foreach($kr as $key => $item)
         <div class="col-xs-4 col-sm-3">
             <div class="panel panel-default">

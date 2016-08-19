@@ -1,6 +1,8 @@
-<div class="row">
-    <h1>showers</h1>
+@if(count($devices))
+<div class="jumbotron row">
+    <h2>Showers</h2>
     <hr>
+    <div class="shower content">
     @foreach($devices as $key => $item)
         {{--{{dd($item)}}--}}
         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
@@ -9,6 +11,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3 col-md-3">
+                            {{--{{dd($item->state)}}--}}
                             <i class="fa {{ ($item->state == 1 && $item->res == 1? 'fa-unlock' :'fa-lock')}} fa-4x"></i>
                         </div>
                         <div class="col-xs-9 col-md-9 text-right">
@@ -30,5 +33,6 @@
             </a>
         </div>
     @endforeach
-
+    </div>
 </div>
+@endif

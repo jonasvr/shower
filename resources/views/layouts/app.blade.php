@@ -24,18 +24,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">
 
     <link rel="stylesheet" href="/style.css">
-
+    @yield('crop')
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 </head>
 <body id="app-layout">
 
     @include('layouts.nav')
-
-    @yield('content')
+    <div class="container">
+        @if (session('success'))
+            <div id="success-message" class="alert alert-success">
+                <a class="close-success fa fa-close"></a> {{ session('success') }}
+            </div>
+        @endif
+        @yield('content')
+    </div>
 
     {{--<!-- JavaScripts -->--}}
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    @yield('js')
+<script>
+    $(".close-success").click(function(){
+        $("#success-message").addClass('hide');
+    });
+</script>
 </body>
 </html>
