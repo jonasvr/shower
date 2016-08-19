@@ -32,6 +32,6 @@ class KotRequest extends Model
     {
         $query->where('kot_requests.koten_id',$koten_id)
             ->join('users','kot_requests.user_id','=','users.id')
-            ->select('kot_requests.id as id','users.name');
+            ->select('kot_requests.id as id','users.name','users.image_url');
     }
 }

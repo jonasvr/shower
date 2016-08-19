@@ -22,7 +22,7 @@ class CreateDevicesTable extends Migration
             $table->string('device_code');
             $table->integer('koten_id');
             $table->string('name');
-            $table->boolean('state')->default(0);
+            $table->integer('state')->default(0);
             $table->timestamps();
         });
     }

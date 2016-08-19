@@ -1,8 +1,8 @@
 <div class="col-md-6">
-    <h2>Everybody</h2>
+    <h2>Overall reservations</h2>
     <hr>
-    <div class="col-md-6">
-        <div class="panel panel-danger">
+    <div class="col-sm-6 col-md-6">
+        <div class="panel panel-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Amount of reservations by girls">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-6 col-md-6">
@@ -17,8 +17,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-primary">
+    <div class="col-sm-6 col-md-6">
+        <div class="panel panel-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Amount of reservations by boys">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-6 col-md-6">

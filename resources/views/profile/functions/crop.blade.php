@@ -25,6 +25,7 @@
             <div class="row">
                 <div class="span12">
                     <div class="jc-demo-box">
+                        <div class="form-horizontal col-sm-12">
                         <div class="col-sm-8 ">
                             <img class="max-height img-responsive " src="/{{$image}}" id="target" alt="original" />
                         </div>
@@ -34,23 +35,26 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-
+                            {!! Form::open(array('url' => route('postCrop'), 'method' => 'post','enctype' =>'multipart/form-data')) !!}
+                            <?= Form::hidden('image', $image) ?>
+                            <?= Form::hidden('x', '', array('id' => 'x')) ?>
+                            <?= Form::hidden('y', '', array('id' => 'y')) ?>
+                            <?= Form::hidden('w', '', array('id' => 'w')) ?>
+                            <?= Form::hidden('h', '', array('id' => 'h')) ?>
+                            <div class="form-group">
+                                {!! Form::submit('crop', ['class' => 'btn btn-default hide', 'id'=>'btn']) !!}
+                            </div>
+                            <?= Form::close() ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-    </div>
+</div>
 
-    {!! Form::open(array('url' => route('postCrop'), 'method' => 'post','enctype' =>'multipart/form-data')) !!}
-    <?= Form::hidden('image', $image) ?>
-    <?= Form::hidden('x', '', array('id' => 'x')) ?>
-    <?= Form::hidden('y', '', array('id' => 'y')) ?>
-    <?= Form::hidden('w', '', array('id' => 'w')) ?>
-    <?= Form::hidden('h', '', array('id' => 'h')) ?>
-    {!! Form::submit('crop', ['class' => 'btn btn-default hide', 'id'=>'btn']) !!}
-    <?= Form::close() ?>
+
 
     <script type="text/javascript">
         $(function() {

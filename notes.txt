@@ -1,8 +1,17 @@
 1) profile => hide/show context
-2) done - profile => image + info
+7) intro
+9) redis
+10) mail styling
+11) adjusting picture
+12) adjust shower name
+
+
+
+ //////////done///////
+2) profile => image + info
 3) stats based on reservations
+8) tooltips at stats
 4) shower broken
 5) chart: time spent in bathroom -> status change
-6) succes messages
-7) intro
-8) tooltips at stats
+
+

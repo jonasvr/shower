@@ -3,7 +3,7 @@
         <h2>Habitants</h2>
         <hr>
         @foreach($habitants as $key => $item)
-            {{--{{dd($item)}}--}}
+{{--            {{dd($item)}}--}}
             @if($item->id != Auth::id())
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
                 <div class="panel panel-default">
@@ -19,7 +19,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 text-right">
                                 <div class="row">
                                 <span class="pull-right font-30">{{explode(' ', $item->name, 2)[0]}}
-                                    <br>  {{explode(' ', $item->name, 2)[1]}}</span>
+                                    <br>  {{(isset(explode(' ', $item->name, 2)[1]) ? explode(' ', $item->name, 2)[1]:'')}}</span>
                                 </div>
                                 @if(Auth::user()->admin)
                                 <div class="row">

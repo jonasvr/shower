@@ -4,22 +4,30 @@
     <hr>
     <div class="shower content">
     @foreach($devices as $key => $item)
-        {{--{{dd($item)}}--}}
         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
             <a href="{{URL::route('calendar', ['id'=>$item->id]) }}">
-            <div class="panel  {{ ($item->state == 1 && $item->res == 1 ? 'panel-success' :'panel-danger')}}">
+                @if($item->state == 2)
+                    <div class="panel panel-warning">
+                @else
+                    <div class="panel  {{ ($item->state == 1 && $item->res == 1 ? 'panel-success' :'panel-danger')}}">
+                @endif
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-xs-3 col-md-3">
-                            {{--{{dd($item->state)}}--}}
-                            <i class="fa {{ ($item->state == 1 && $item->res == 1? 'fa-unlock' :'fa-lock')}} fa-4x"></i>
+                        <div class="col-xs-12 col-md-3">
+                            @if($item->state == 2)
+                                <i class="fa fa-close fa-4x"></i>
+                            @else
+                                <i class="fa {{ ($item->state == 1 && $item->res == 1? 'fa-unlock' :'fa-lock')}} fa-4x"></i>
+                            @endif
                         </div>
-                        <div class="col-xs-9 col-md-9 text-right">
+                        <div class="hidden-xs col-md-9 text-right">
                             <div class="font-40">
-                                @if($item->state == 1 && $item->res == 1)
-                                    free
+                                @if($item->state == 2)
+                                    Broken
+                                @elseif($item->state == 1 && $item->res == 1)
+                                    Free
                                 @else
-                                    taken
+                                    Taken
                                 @endif
                             </div>
                         </div>

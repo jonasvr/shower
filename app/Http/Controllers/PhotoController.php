@@ -26,7 +26,7 @@ class PhotoController extends Controller
         $this->user = $user;
     }
 
-    public function postCrop(CropRequest $request)
+    public function postCrop(Request $request)
     {
         $data = $request->all();
         $quality = 90;
@@ -44,9 +44,8 @@ class PhotoController extends Controller
         $user->image_url = $src;
         $user->steps++;
         $user->save();
+        session(['success' =>"The picture has been added and cropped."]);
 
-        return redirect()->route('getProfile')->withSuccess('succesfully added a picture');
-
-//        return "<img src='" . $src . "'>";
+        return redirect()->route('getProfile');
     }
 }

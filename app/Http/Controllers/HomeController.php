@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Device;
 use App\Http\Requests;
 use App\Reservatie;
 use App\User;
@@ -18,16 +19,24 @@ class HomeController extends Controller
      * @var User
      */
     protected $user;
+
+    /**
+     * @var Device
+     */
+    protected $device;
+
     /**
      * HomeController constructor.
      * @param Reservatie $res
      * @param User $user
+     * @param Device $device
      */
-    public function __construct(Reservatie $res, User $user)
+    public function __construct(Reservatie $res, User $user, Device $device)
     {
         $this->middleware('auth');
         $this->res = $res;
         $this->user = $user;
+        $this->device = $device;
     }
 
     /**
@@ -77,6 +86,7 @@ class HomeController extends Controller
                     ->GetKot(Auth::user()->koten_id)
                     ->CountGirl() / $kot * 100,
         ];
+
         $kot_boy =[
             'total' =>$this->res->GetUses()
                 ->GetKot(Auth::user()->koten_id)
@@ -86,6 +96,10 @@ class HomeController extends Controller
                     ->CountBoy() / $kot * 100,
         ];
 
+        $time_all = $this->device->sum('spend_time');
+        $time_kot = $this->device->FindDevices(Auth::user()->koten_id)
+            ->sum('spend_time');
+
         $data=[
             'all' => $all,
             'all_girl' => $all_girl,
@@ -93,6 +107,8 @@ class HomeController extends Controller
             'kot' => $kot,
             'kot_girl' => $kot_girl,
             'kot_boy' => $kot_boy,
+            'time_all' => $time_all,
+            'time_kot' => $time_kot,
         ];
 
         return $data;

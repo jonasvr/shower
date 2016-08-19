@@ -2,17 +2,21 @@
 <div class="jumbotron row">
     <h2>Kot requests</h2>
     @foreach($kr as $key => $item)
-        <div class="col-xs-4 col-sm-3">
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-xs-3 col-md-3">
-                            <i class="fa fa-user fa-5x"></i>
+                        <div class="col-xs-12 col-sm-12 col-md-3">
+                            @if($item->image_url)
+                                <img src="/{{$item->image_url}}" class="img-circle" alt="Cinque Terre" width="75" height="75">
+                            @else
+                                <i class="fa fa-user fa-5x"></i>
+                            @endif
                         </div>
-                        <div class="col-md-9 text-right">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 text-right">
                             <div class="row">
                                 <span class="pull-right font-30">{{explode(' ', $item->name, 2)[0]}}
-                                    <br>  {{explode(' ', $item->name, 2)[1]}}</span>
+                                    <br>  {{(isset(explode(' ', $item->name, 2)[1]) ? explode(' ', $item->name, 2)[1]:'')}}</span>
                             </div>
                             <div class="row">
                                 <a href="{{URL::route('accept', ['id'=>$item->id]) }}">

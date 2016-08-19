@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\URL;
 use Redirect;
 use App\Http\Requests\InfoRequest;
+use App\Http\Requests\CropRequest;
 
 class ProfileController extends Controller
 {
@@ -91,7 +92,7 @@ class ProfileController extends Controller
         return redirect()->route('getProfile');
     }
 
-    public function addInfo2(Request $request)
+    public function addInfo2(CropRequest $request)
     {
         $user = Auth::user();
             $user->sex = $request->sex;
@@ -118,6 +119,7 @@ class ProfileController extends Controller
         $kot = $this->koten->FindKot(Auth::user()->koten_id)
             ->first();
         $habitants = $this->user->where('koten_id',Auth::user()->koten_id)
+            ->where('koten_id','<>',0)
             ->get();
         $devices=[];
         if(Auth::user()->koten_id){

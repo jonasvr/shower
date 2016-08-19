@@ -132,9 +132,9 @@ class KotController extends Controller
         $kot = $this->koten->FindKot(Auth::user()->koten_id)->first();
         $data['koten_id'] = $kot->id;
         $this->device->where('device_code',$request->device_code)->update($data);
-        $with['success'] = "The device is succesfully added.";
+        session(['success' => "The device is succesfully added."]);
 
-        return back()->with($with);
+        return back();
     }
 
     /**
@@ -150,12 +150,11 @@ class KotController extends Controller
             $user->update(['koten_id' => $kot->id]);
             $this->dispatch(new NotifyAccept($user, $kot->code,true));
             $request->delete();
+            session(['success' => "The user has been added to your kot."]);
         }else{
-            $message['error'] =['unautherised'=>"you can't accept this user."];
+            session(['error' =>"You can't accept this user."]);
         }
-
-
-        return redirect()->route('getProfile');
+        return back();
 
     }
 
@@ -171,18 +170,48 @@ class KotController extends Controller
             $user = $this->user->find($request->user_id)->first();
             $this->dispatch(new NotifyAccept($user, $kot->code, false));
             $request->delete();
-        }else{
-            $message['error'] =['unautherised'=>"you can't delete this user."];
+            session(['success' => "The user has been deleted to your kot."]);
+        }else {
+            session(['success' => "You can't delete this user."]);
         }
 
-        return redirect()->route('getProfile');
+        return back();
     }
 
+    public function broken($id)
+    {
+        $kot = $this->device->where('id',$id)->first();
+        if($kot->state == 2)
+        {
+            $kot->state = 1;
+            session(['success' =>"The devices state has been set to free."]);
+        }else{
+            $kot->state = 2;
+            session(['success' => "The devices state has been set to broken."]);
+        }
+        $kot->save();
 
+        return back();
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteHabitant($id)
     {
-        $this->user->where('id',$id)->koten_id = 0;
-        $this->user->save();
+        $user = $this->user->where('id',$id)
+            ->where('koten_id',Auth::user()->koten_id)
+            ->first();
+        if(count($user))
+        {
+            $user->koten_id = 0;
+            $user->save();
+            session(['success' => "The user has been deleted."]);
+        }else{
+            session(['success' => "Something went wrong."]);
+        }
+
 
         return back();
     }

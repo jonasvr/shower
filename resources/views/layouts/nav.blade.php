@@ -24,7 +24,7 @@
                             @if(Auth::user()->image_url)
                                 <img src="/{{Auth::user()->image_url}}" class="img-circle" alt="Cinque Terre" width="30" height="30">
                             @else
-                                <i class="fa fa-user fa-5x"></i>
+                                <i class="fa fa-user fa-2x"></i>
                             @endif
                         @endif
 

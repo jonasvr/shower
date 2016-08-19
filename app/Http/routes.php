@@ -36,13 +36,15 @@ Route::group(['prefix' => 'profile'], function(){
     {
         return View('profile.functions.crop')->with('image', 'img/users/'. Session::get('image'));
     }]);
-    Route::post('/crop', ['as' => 'postCrop', 'uses' => 'PhotoController@postCrop']);
+
+    Route::post('/postcrop', ['as' => 'postCrop', 'uses' => 'PhotoController@postCrop']);
 });
 
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/',['as' => 'admin', 'uses' => 'KotController@admin']);
     Route::get('/accept/{id}', ['as'=>'accept', 'uses' => 'KotController@accept']);
     Route::get('/decline/{id}', ['as'=>'decline', 'uses' => 'KotController@decline']);
+    Route::get('/broken/{id}', ['as'=>'broken', 'uses' => 'KotController@broken']);
 
 });
 
