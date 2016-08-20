@@ -35,12 +35,14 @@
             <div id="success-message" class="alert alert-success">
                 <a class="close-success fa fa-close"></a> {{ session('success') }}
             </div>
+            {{session()->forget('success')}}
         @endif
         @if (session('error'))
             <div id="succes-message" class="alert alert-danger">
                 <a class="close-success fa fa-close"></a> {{ session('error') }}
             </div>
-        @endif
+                {{session()->forget('error')}}
+            @endif
         @yield('content')
     </div>
 

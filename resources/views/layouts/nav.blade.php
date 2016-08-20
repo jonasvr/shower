@@ -28,7 +28,10 @@
                             @endif
                         @endif
 
-                    </a></li>
+                    </a>
+                </li>
+
+                @yield('nav')
             </ul>
 
             <!-- Right Side Of Navbar -->

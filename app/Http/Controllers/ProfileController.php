@@ -92,6 +92,10 @@ class ProfileController extends Controller
         return redirect()->route('getProfile');
     }
 
+    /**
+     * @param CropRequest $request
+     * @return string
+     */
     public function addInfo2(CropRequest $request)
     {
         $user = Auth::user();
@@ -136,6 +140,11 @@ class ProfileController extends Controller
             'res' => $res,
         ];
         return view('profile.profile')->with($data);
+    }
+
+    public function getEdit()
+    {
+        return view('profile.functions.edit');
     }
 
     /////////////////////helpers///////////////////

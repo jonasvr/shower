@@ -19,7 +19,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 text-right">
                                 <div class="row">
                                 <span class="pull-right font-30">{{explode(' ', $item->name, 2)[0]}}
-                                    <br>  {{(isset(explode(' ', $item->name, 2)[1]) ? explode(' ', $item->name, 2)[1]:'')}}</span>
+                                    <br>  {!!(isset(explode(' ', $item->name, 2)[1]) ? explode(' ', $item->name, 2)[1]:'<br>')!!}</span>
                                 </div>
                                 @if(Auth::user()->admin)
                                 <div class="row">

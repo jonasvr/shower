@@ -14,7 +14,7 @@ class AddToUsers extends Migration
     {
         Schema::table('users', function ($table) {
             $table->integer('steps')->default(0);
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->boolean('sex')->comment('man = 0');
         });
     }

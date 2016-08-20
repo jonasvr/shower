@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\AddDeviceRequest;
+use App\Http\Requests\EditDeviceRequest;
 use App\Http\Requests\AddKotRequest;
 
 use App\User;
@@ -132,7 +133,7 @@ class KotController extends Controller
         $kot = $this->koten->FindKot(Auth::user()->koten_id)->first();
         $data['koten_id'] = $kot->id;
         $this->device->where('device_code',$request->device_code)->update($data);
-        session(['success' => "The device is succesfully added."]);
+        session(['success' => "Your device was added."]);
 
         return back();
     }
@@ -168,6 +169,8 @@ class KotController extends Controller
         $kot = $this->koten->find($request->koten_id)->first();
         if($this->permission($kot)) {
             $user = $this->user->find($request->user_id)->first();
+            $user->steps = 0;
+            $user->save();
             $this->dispatch(new NotifyAccept($user, $kot->code, false));
             $request->delete();
             session(['success' => "The user has been deleted to your kot."]);
@@ -180,16 +183,16 @@ class KotController extends Controller
 
     public function broken($id)
     {
-        $kot = $this->device->where('id',$id)->first();
-        if($kot->state == 2)
+        $device = $this->device->where('id',$id)->first();
+        if($device->state == 2)
         {
-            $kot->state = 1;
+            $device->state = 1;
             session(['success' =>"The devices state has been set to free."]);
         }else{
-            $kot->state = 2;
+            $device->state = 2;
             session(['success' => "The devices state has been set to broken."]);
         }
-        $kot->save();
+        $device->save();
 
         return back();
     }
@@ -216,8 +219,32 @@ class KotController extends Controller
         return back();
     }
 
+    public function getedit($id)
+    {
+        $device = $this->device->where('id',$id)->first();
+        return view('admin.functions.edit')->with(['device'=>$device]);
+    }
+
+    /**
+     * @param EditDeviceRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function editDevice(EditDeviceRequest $request)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+        $this->device->where('device_code',$request->device_code)->update($data);
+        session(['success' => "The name of your device has changed."]);
+
+        return redirect()->route('admin');
+    }
+
     /////HELPER////////////
 
+    /**
+     * @param $kot
+     * @return bool
+     */
     public function permission($kot)
     {
         if(Auth::user()->koten_id == $kot->id && Auth::user()->admin) {
@@ -227,7 +254,7 @@ class KotController extends Controller
         }
     }
 
-    /////////////////////helpers///////////////////
+
     /**
      * @param $devices
      * @return mixed

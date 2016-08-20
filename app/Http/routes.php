@@ -31,13 +31,20 @@ Route::group(['prefix' => 'profile'], function(){
     Route::get('/delete/{id}', ['as'=>'delete', 'uses' => 'KotController@deleteHabitant']);
     Route::post('/add', ['as'=>'addInfo', 'uses' => 'ProfileController@addInfo']);
     Route::post('/add2', ['as'=>'addInfo2', 'uses' => 'ProfileController@addInfo2']);
+    Route::post('/edit/post', ['as'=>'editpost', 'uses' => 'ProfileController@addInfo2']);
     Route::post('/info',['as' => 'info','uses' => 'ProfileController@addInfo']);
     Route::get('/crop',['as' => 'crop', function()
     {
         return View('profile.functions.crop')->with('image', 'img/users/'. Session::get('image'));
     }]);
 
-    Route::post('/postcrop', ['as' => 'postCrop', 'uses' => 'PhotoController@postCrop']);
+    Route::post('/postcrop', ['as' => 'postCrop', 'uses' => 'PhotoController@postCrop']);\
+
+    Route::group(['prefix'=>'calendar'],function(){
+            Route::get('/{id}',['as'=>'calendar','uses'=>'CalendarController@Calendar']);
+            Route::post('/reserve',['as'=>'reserve','uses'=>'CalendarController@reserve']);
+            Route::get('cancel/{id}',['as'=>'cancel','uses'=>'CalendarController@cancel']);
+        });
 });
 
 Route::group(['prefix' => 'admin'], function(){
@@ -45,18 +52,16 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/accept/{id}', ['as'=>'accept', 'uses' => 'KotController@accept']);
     Route::get('/decline/{id}', ['as'=>'decline', 'uses' => 'KotController@decline']);
     Route::get('/broken/{id}', ['as'=>'broken', 'uses' => 'KotController@broken']);
-
+    Route::get('/edit/{id}', ['as'=>'editName', 'uses' => 'KotController@getedit']);
+    Route::post('/edit/', ['as'=>'editDevice', 'uses' => 'KotController@editDevice']);
 });
 
 Route::group(['prefix' => 'api','middleware' => 'api'], function () {
     Route::get('shower/{device_id}/{state}', 'ApiController@showerGet');
 });
 
-Route::group(['prefix'=>'calendar'],function(){
-    Route::get('/{id}',['as'=>'calendar','uses'=>'CalendarController@Calendar']);
-    Route::post('/reserve',['as'=>'reserve','uses'=>'CalendarController@reserve']);
-    Route::get('cancel/{id}',['as'=>'cancel','uses'=>'CalendarController@cancel']);
-});
 
 
 Route::get('/stats',['as'=>'stats', 'uses' => 'HomeController@stats']);
+
+route::get('/send','HomeController@send');

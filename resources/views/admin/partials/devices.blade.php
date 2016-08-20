@@ -12,6 +12,7 @@
                     <th>State</th>
                     <th>Time used</th>
                     <th>Broken</th>
+                    <th>Edit name</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,10 +34,17 @@
                                 Taken
                             @endif
                         </td>
-                        <td>10 u</td>
+                        <td>{{floor($item->spend_time/60/24)}}d
+                            {{floor($item->spend_time/60)}}h
+                            {{$item->spend_time%60}}m</td>
                         <td>
                             <a href="{{URL::route('broken', ['id'=>$item->id]) }}">
                                 <span class="fa {{($item->state < 2?"fa-chain":"fa-chain-broken")}}"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{URL::route('editName', ['id'=>$item->id]) }}">
+                                <span class="fa fa-pencil"></span>
                             </a>
                         </td>
                     </tr>

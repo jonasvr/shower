@@ -2,20 +2,37 @@
 @extends('layouts.app')
 
 @section('title')
-    profile
+    Calendar - {{$device->name}}
+@endsection
+
+@section('nav')
+    <a class="navbar-brand" href="{{URL::route('getProfile')}}">
+       profile -  calendar - {{$device->name}}
+    </a>
 @endsection
 
 @section('content')
-    <div class="jumbotron row">
-        <h2>Reserve</h2>
-        <hr>
-        <div class="col-md-offset-1 col-md-3">
-            @include('calendar.partial.shower')
-            @include('calendar.partial.reserve')
+    @if($device->state==2)
+        <div class="jumbotron row">
+            <div class="col-md-offset-1 col-md-3">
+                @include('calendar.partial.shower')
+            </div>
+            <div class="row">
+                <h1> The shower is broken.</h1>
+            </div>
         </div>
-        <div class="col-md-6">
-            {!! $calendar->calendar() !!}
-            {!! $calendar->script() !!}
+    @else
+        <div class="jumbotron row">
+            <h2>Reserve</h2>
+            <hr>
+            <div class="col-md-offset-1 col-md-3">
+                @include('calendar.partial.shower')
+                @include('calendar.partial.reserve')
+            </div>
+            <div class="col-md-6">
+                {!! $calendar->calendar() !!}
+                {!! $calendar->script() !!}
+            </div>
         </div>
-    </div>
+    @endif
 @endsection

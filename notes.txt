@@ -1,10 +1,13 @@
 1) profile => hide/show context
 7) intro
-9) redis
 10) mail styling
-11) adjusting picture
-12) adjust shower name
+9) redis
 
+
+
+//////
+14) navigatie -> navragen
+15) title
 
 
  //////////done///////
@@ -13,5 +16,6 @@
 8) tooltips at stats
 4) shower broken
 5) chart: time spent in bathroom -> status change
-
-
+11) adjusting picture
+13) na weigering -> terug step 1
+12) adjust shower name
