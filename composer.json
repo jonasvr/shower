@@ -9,7 +9,9 @@
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
         "maddhatter/laravel-fullcalendar": "^1.2",
-        "fedeisas/laravel-mail-css-inliner": "~1.5"
+        "fedeisas/laravel-mail-css-inliner": "~1.5",
+        "predis/predis": "^1.1",
+        "laracasts/utilities": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

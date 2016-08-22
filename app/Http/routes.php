@@ -33,6 +33,8 @@ Route::group(['prefix' => 'profile'], function(){
     Route::post('/add2', ['as'=>'addInfo2', 'uses' => 'ProfileController@addInfo2']);
     Route::post('/edit/post', ['as'=>'editpost', 'uses' => 'ProfileController@addInfo2']);
     Route::post('/info',['as' => 'info','uses' => 'ProfileController@addInfo']);
+    Route::get('/edit/', ['as'=>'editPicture', 'uses' => 'ProfileController@getedit']);
+
     Route::get('/crop',['as' => 'crop', function()
     {
         return View('profile.functions.crop')->with('image', 'img/users/'. Session::get('image'));
@@ -58,6 +60,8 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::group(['prefix' => 'api','middleware' => 'api'], function () {
     Route::get('shower/{device_id}/{state}', 'ApiController@showerGet');
+    Route::get('state/{koten_id}','ApiController@changeState');
+    Route::get('calstate/{device_id}','ApiController@changecalState');
 });
 
 
@@ -65,3 +69,7 @@ Route::group(['prefix' => 'api','middleware' => 'api'], function () {
 Route::get('/stats',['as'=>'stats', 'uses' => 'HomeController@stats']);
 
 route::get('/send','HomeController@send');
+
+route::get('/mail',function(){
+    return view('mail.mailstyle');
+});

@@ -7,10 +7,10 @@
             <table class="table table-striped table-hover ">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th class="hidden-xs">#</th>
                     <th>Name</th>
                     <th>State</th>
-                    <th>Time used</th>
+                    <th class="hidden-xs">Time used</th>
                     <th>Broken</th>
                     <th>Edit name</th>
                 </tr>
@@ -23,7 +23,7 @@
                     @else
                         <tr class="{{$item->state == 1 && $item->res == 1 ?"success":"danger"}}">
                     @endif
-                        <td>{{$key +1}}</td>
+                        <td class="hidden-xs">{{$key +1}}</td>
                         <td>{{$item->name}}</td>
                         <td>
                             @if($item->state == 2)
@@ -34,7 +34,7 @@
                                 Taken
                             @endif
                         </td>
-                        <td>{{floor($item->spend_time/60/24)}}d
+                        <td class="hidden-xs">{{floor($item->spend_time/60/24)}}d
                             {{floor($item->spend_time/60)}}h
                             {{$item->spend_time%60}}m</td>
                         <td>

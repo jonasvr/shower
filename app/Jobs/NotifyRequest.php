@@ -54,11 +54,16 @@ class NotifyRequest extends Job implements ShouldQueue
 
         $title = "Kot request";
 
-        Mail::send('mail.notify', [
+        Mail::send('mail.mailstyle', [
             'title' => $title,
             'content' => $content,
             'accept' => $accept,
-            'decline' => $decline
+            'decline' => $decline,
+            'user' => $this->user->name,
+            'admin' => $this->admin->name,
+            'acceptImg' => public_path()."/img/mail/accept.png",
+            'declineImg' => public_path()."/img/mail/decline.png",
+
         ],
             function ($message)
             {

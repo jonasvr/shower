@@ -1,46 +1,70 @@
-@if(count($devices))
+<div class="shower" v-if="devices.length > 0">
 <div class="jumbotron row">
     <h2>Showers</h2>
     <hr>
-    <div class="shower content">
-    @foreach($devices as $key => $item)
-        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-            <a href="{{URL::route('calendar', ['id'=>$item->id]) }}">
-                @if($item->state == 2)
+    <div class="content">
+    <div v-for="(key, item) in devices"> {{--foreach--}}
+        <div v-if="item.state == 2">
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                <a href="/profile/calendar/@{{item.id}}">
                     <div class="panel panel-warning">
-                @else
-                    <div class="panel  {{ ($item->state == 1 && $item->res == 1 ? 'panel-success' :'panel-danger')}}">
-                @endif
-                <div class="panel-heading">
+
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-3">
+                                        <i class="fa fa-close fa-4x"></i>
+                                </div>
+                                <div class="hidden-xs col-md-9 text-right">
+                                    <div class="font-40">
+                                            Broken
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <span class="pull-right font-30">@{{item.name}}</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div v-else>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+            <a href="/profile/calendar/@{{item.id}}">
+               <div v-bind:class="[item.state == 1 && item.res == 1 ? 'panel panel-success' : 'panel panel-danger']">
+
+                  <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-12 col-md-3">
-                            @if($item->state == 2)
-                                <i class="fa fa-close fa-4x"></i>
-                            @else
-                                <i class="fa {{ ($item->state == 1 && $item->res == 1? 'fa-unlock' :'fa-lock')}} fa-4x"></i>
-                            @endif
+                                <i v-bind:class="[item.state == 1 && item.res ==1 ? 'fa fa-unlock  fa-4x' : 'fa fa-lock  fa-4x']"></i>
                         </div>
                         <div class="hidden-xs col-md-9 text-right">
                             <div class="font-40">
-                                @if($item->state == 2)
+                                <div v-if="item.state == 2">
                                     Broken
-                                @elseif($item->state == 1 && $item->res == 1)
-                                    Free
-                                @else
-                                    Taken
-                                @endif
+                                </div>
+                                <div v-else>
+                                    <div v-if="item.state==1 && item.res==1">
+                                        Free
+                                    </div>
+                                    <div v-else>
+                                        Taken
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <span class="pull-right font-30">{{$item->name}}</span>
+                            <span class="pull-right font-30">@{{item.name}}</span>
                             <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
             </div>
             </a>
+            </div>
         </div>
-    @endforeach
+    </div>
     </div>
 </div>
-@endif
+</div>

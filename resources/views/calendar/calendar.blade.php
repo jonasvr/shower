@@ -6,9 +6,10 @@
 @endsection
 
 @section('nav')
+
     <a class="navbar-brand" href="{{URL::route('getProfile')}}">
-       profile -  calendar - {{$device->name}}
-    </a>
+       profile
+    </a> <div class="navbar-brand"> -  calendar - {{$device->name}}</div>
 @endsection
 
 @section('content')
@@ -35,4 +36,8 @@
             </div>
         </div>
     @endif
+@endsection
+
+@section('js')
+    <script src="/js/calendar.js"></script>
 @endsection

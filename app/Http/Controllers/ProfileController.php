@@ -13,6 +13,7 @@ use App\Device;
 use App\KotRequest;
 use App\Reservatie;
 use Auth;
+use JavaScript;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\URL;
 use Redirect;
@@ -139,6 +140,11 @@ class ProfileController extends Controller
             'habitants' => $habitants,
             'res' => $res,
         ];
+
+        JavaScript::put([
+            'devices' => $devices,
+        ]);
+
         return view('profile.profile')->with($data);
     }
 

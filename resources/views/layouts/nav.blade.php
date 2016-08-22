@@ -48,6 +48,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ URL::route('getProfile') }}"><i class="fa fa-btn fa-user"></i> Profile</a></li>
+                            <li><a href="{{ URL::route('editPicture') }}"><i class="fa fa-btn fa-picture-o"></i> New Picture</a></li>
                             <li><a href="{{ url('/stats') }}"><i class="fa fa-btn fa-bar-chart"></i> Stats</a></li>
                             @if(Auth::user()->admin)
                                 <li><a href="{{ url('/admin') }}"><i class="fa fa-btn fa-cog"></i> Admin</a></li>

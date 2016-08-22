@@ -1,12 +1,10 @@
-1) profile => hide/show context
 7) intro
 10) mail styling
-9) redis
-
+16) admin
 
 
 //////
-14) navigatie -> navragen
+14) navigatie -> navragens
 15) title
 
 
@@ -19,3 +17,4 @@
 11) adjusting picture
 13) na weigering -> terug step 1
 12) adjust shower name
+9) redis

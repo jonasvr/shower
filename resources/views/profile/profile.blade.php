@@ -13,7 +13,6 @@
 @section('content')
     @if(Auth::user()->steps == 0)
         <div class="row">
-            <h1>Completing your Registration step 1.</h1>
             @if(Auth::user()->admin)
                 @include('profile.partial.admin')
             @else
@@ -31,6 +30,7 @@
             @endif
             <hr>
             @include('profile.devices.showers')
+                @include('mail.img2')
             @include('profile.partial.myReservations')
             @include('profile.partial.habitants')
 
@@ -38,4 +38,10 @@
             {{--<button class="showButton" id="test">test</button>--}}
         </div>
     @endif
+@endsection
+
+
+
+@section('js')
+    <script src="/js/shower.js"></script>
 @endsection

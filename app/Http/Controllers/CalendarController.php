@@ -10,6 +10,7 @@ use App\Reservatie;
 use App\Device;
 use App\User;
 use Auth;
+use JavaScript;
 
 use App\Http\Requests\ReserveRequest;
 
@@ -61,6 +62,12 @@ class CalendarController extends Controller
             'device' => $device,
             'today' => Carbon::now()->format('Y-m-d'),
         ];
+
+        JavaScript::put([
+            'device'=>$device,
+            'device_id'=>$device->id,
+            'koten_id'=>$device->koten_id,
+        ]);
         return view('calendar.calendar')->with($data);
     }
 
