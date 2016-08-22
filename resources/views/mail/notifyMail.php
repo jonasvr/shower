@@ -1,4 +1,4 @@
-<!doctype html>
+<!shutdown -h nowctype html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width">

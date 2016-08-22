@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">
 
     <link rel="stylesheet" href="/style.css">
+    @yield('style')
     @yield('crop')
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 </head>

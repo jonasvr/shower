@@ -30,3 +30,15 @@
 .width-img{
     width:300px;
 }
+
+.max-height-500{
+    max-height: 500px;
+}
+
+.max-width-500{
+    max-width: 500px;
+}
+
+.header{
+    background-image: url('/img/layout/bathroom.jpg');
+}

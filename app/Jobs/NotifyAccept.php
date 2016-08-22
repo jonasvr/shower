@@ -53,7 +53,8 @@ class NotifyAccept extends Job implements ShouldQueue
             $title  = 'Acceptence kot';
         }
 
-        Mail::send('mail.send', [
+        Mail::send('mail.awnserMail', [
+            'user' => $this->user->name,
             'title' => $title,
             'content' => $content
         ],

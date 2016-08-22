@@ -54,7 +54,7 @@ class NotifyRequest extends Job implements ShouldQueue
 
         $title = "Kot request";
 
-        Mail::send('mail.mailstyle', [
+        Mail::send('mail.notifyMail', [
             'title' => $title,
             'content' => $content,
             'accept' => $accept,

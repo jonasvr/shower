@@ -30,7 +30,6 @@
             @endif
             <hr>
             @include('profile.devices.showers')
-                @include('mail.img2')
             @include('profile.partial.myReservations')
             @include('profile.partial.habitants')
 
