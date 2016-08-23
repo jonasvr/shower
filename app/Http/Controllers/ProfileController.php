@@ -121,7 +121,7 @@ class ProfileController extends Controller
      */
     public function getProfile()
     {
-        dd(Auth::user()->koten_id);
+        dd(Auth::user());
 //        $kot = $this->koten->FindKot(Auth::user()->koten_id)
 //            ->first();
 //        $habitants = $this->user->where('koten_id',Auth::user()->koten_id)
