@@ -56,7 +56,8 @@ class NotifyAccept extends Job implements ShouldQueue
         Mail::send('mail.awnserMail', [
             'user' => $this->user->name,
             'title' => $title,
-            'content' => $content
+            'content' => $content,
+            'mainImg' => public_path()."/img/mail/main.png",
         ],
             function ($message)
             {

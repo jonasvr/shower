@@ -8,7 +8,7 @@
     <header class="header-image">
         <div class="headline">
             <div class="container">
-                <h1>Kot van de toekomst</h1>
+                <h1>Kot van de Toekomst</h1>
             </div>
         </div>
     </header>

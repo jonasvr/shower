@@ -63,6 +63,8 @@ class NotifyRequest extends Job implements ShouldQueue
             'admin' => $this->admin->name,
             'acceptImg' => public_path()."/img/mail/accept.png",
             'declineImg' => public_path()."/img/mail/decline.png",
+            'mainImg' => public_path()."/img/mail/main.png",
+
 
         ],
             function ($message)

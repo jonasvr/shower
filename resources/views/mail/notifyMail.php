@@ -107,7 +107,7 @@
                 </tr>
                 <!-- Header Image -->
                 <tr>
-                    <td><img src="http://placehold.it/600x250" alt="" class="responsive" border="0" style="display: block;"></td>
+                    <td><img src="{{$message->embed($mainImg)}}" alt="" class="responsive" border="0" style="display: block;"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
