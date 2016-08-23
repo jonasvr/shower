@@ -13,8 +13,8 @@
                 <div class="form-group">
                     {!! Form::label('sex', 'sex:', ['class' => 'col-md-3  control-label']) !!}
                     <div class="col-md-9">
-                        {!! Form::radio('sex', '0',array('checked' => 'checked')) !!} man <br>
-                        {!! Form::radio('sex', '1') !!} female <br>
+                        <input type="radio" id="man" name="sex" value="0" checked="checked"> <label for="man">Male</label><br>
+                        <input type="radio" id="female" name="sex" value="1"> <label for="female">Female</label><br>
                     </div>
                 </div>
                 <div class="form-group">

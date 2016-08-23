@@ -83,21 +83,26 @@ class CalendarController extends Controller
     {
 //        dd($request->all());
         $start = new Carbon($request->date . $request->time);
-        $end = $start->copy()->subMinutes(10);
+        $minus10 = $start->copy()->subMinutes(9);
+//        dd($minus10);
+        $add10 = $start->copy()->addMinutes(9);
         $taken = $this->res->where('start',$start)
-            ->where('start','>=',$end)
+            ->where('start','>=',$minus10)
+            ->orWhere('start','<=',$add10)
             ->where('device_id',$request->device_id)
-            ->first();
+            ->get();
 
-        if(!$taken) {
+        if(count($taken)<1) {
             $data['user_id'] = Auth::id();
             $data['start'] = $start;
             $data['device_id'] = $request->device_id;
             $this->res->create($data);
+            $data=['success'=> 'Your reservation has been placed'];
+
         }else{
-         echo 'error';
+        $data=['error'=> 'Your chosen time overlaps with someone else reservation'];
         }
-        return back();
+        return back()->with($data);
     }
 
     public function cancel($id)

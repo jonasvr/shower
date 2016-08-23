@@ -19,19 +19,16 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ URL::route('getProfile') }}">
-                        @if(!Auth::guest())
-                            @if(Auth::user()->image_url)
-                                <img src="/{{Auth::user()->image_url}}" class="img-circle" alt="Cinque Terre" width="30" height="30">
-                            @else
-                                <i class="fa fa-user fa-2x"></i>
-                            @endif
-                        @endif
+                @if (!Auth::guest())
 
+                <li><a href="{{ URL::route('getProfile') }}">
+                        Dasboard
                     </a>
                 </li>
-
-                @yield('nav')
+                <li><a href="{{ url('/stats') }}">
+                        Stats
+                    </a></li>
+                    @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -41,15 +38,24 @@
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
+                    <li><a href="{{ URL::route('getProfile') }}">
+                            @if(!Auth::guest())
+                                @if(Auth::user()->image_url)
+                                    <img src="/{{Auth::user()->image_url}}" class="img-circle" alt="Cinque Terre" width="30" height="30">
+                                @else
+                                    <i class="fa fa-user fa-2x"></i>
+                                @endif
+                            @endif
+
+                        </a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ URL::route('getProfile') }}"><i class="fa fa-btn fa-user"></i> Profile</a></li>
-                            <li><a href="{{ URL::route('editPicture') }}"><i class="fa fa-btn fa-picture-o"></i> New Picture</a></li>
-                            <li><a href="{{ url('/stats') }}"><i class="fa fa-btn fa-bar-chart"></i> Stats</a></li>
+                            <li><a href="{{ URL::route('realProfile') }}"><i class="fa fa-btn fa-user"></i> profile</a></li>
                             @if(Auth::user()->admin)
                                 <li><a href="{{ url('/admin') }}"><i class="fa fa-btn fa-cog"></i> Admin</a></li>
                             @endif

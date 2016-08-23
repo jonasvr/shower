@@ -5,13 +5,6 @@
     Calendar - {{$device->name}}
 @endsection
 
-@section('nav')
-
-    <a class="navbar-brand" href="{{URL::route('getProfile')}}">
-       profile
-    </a> <div class="navbar-brand"> -  calendar - {{$device->name}}</div>
-@endsection
-
 @section('content')
     @if($device->state==2)
         <div class="jumbotron row">

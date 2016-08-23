@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    profile
-@endsection
-
-@section('nav')
-    <a class="navbar-brand" href="#">
-        profile
-    </a>
+    Dashboard
 @endsection
 
 @section('content')
@@ -19,12 +13,12 @@
                 @include('profile.partial.user')
             @endif
         </div>
-    @elseif(Auth::user()->steps == 1 && Auth::user()->image_url == null )
+    @elseif(Auth::user()->steps == 1)
         @include('profile.partial.userInfo')
     @else
         <div class="row">
             @if(isset($kot->id))
-                <h1>Your kot Id is: {{$kot->code}}</h1>
+                <h1>Dashboard</h1>
             @else
                 <h1> Your request hasn't been approved yet. </h1>
             @endif

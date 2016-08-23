@@ -42,3 +42,8 @@
 .header{
     background-image: url('/img/layout/bathroom.jpg');
 }
+
+.jumbotron{
+    padding-top: 25px;
+    padding-bottom:25px;
+}

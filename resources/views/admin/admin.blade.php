@@ -6,8 +6,11 @@
 
 @section('content')
     <div class="row">
-        <h1>Your kot Id is: {{$kot->code}}</h1>
+        <h1>Admin</h1>
         <hr>
+        <div class="jumbotron row">
+            <h2>Your Kot code is: {{$kot->code}}</h2>
+        </div>
         @include('admin.partials.requests')
         @include('profile.partial.addDevice')
         {{--@include('profile.devices.showers')--}}

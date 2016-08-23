@@ -42,10 +42,16 @@ class PhotoController extends Controller
 
         $user = Auth::user();
         $user->image_url = $src;
-        $user->steps++;
         $user->save();
         session(['success' =>"The picture has been added and cropped."]);
 
-        return redirect()->route('getProfile');
+        if (Auth::user()->steps != 2){
+            $user->steps++;
+            $user->save();
+            return redirect()->route('getProfile');
+        }else {
+
+            return redirect()->route('realProfile');
+        }
     }
 }

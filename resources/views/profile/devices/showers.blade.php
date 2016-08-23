@@ -6,7 +6,7 @@
     <div v-for="(key, item) in devices"> {{--foreach--}}
         <div v-if="item.state == 2">
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                <a href="/profile/calendar/@{{item.id}}">
+                <a href="/dashboard/calendar/@{{item.id}}">
                     <div class="panel panel-warning">
 
                         <div class="panel-heading">
@@ -31,7 +31,7 @@
         </div>
         <div v-else>
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-            <a href="/profile/calendar/@{{item.id}}">
+            <a href="/dashboard/calendar/@{{item.id}}">
                <div v-bind:class="[item.state == 1 && item.res == 1 ? 'panel panel-success' : 'panel panel-danger']">
 
                   <div class="panel-heading">
@@ -64,6 +64,7 @@
             </a>
             </div>
         </div>
+
     </div>
     </div>
 </div>

@@ -1,7 +1,6 @@
 <div class="shower">
     <div v-if="device.state == 2">
     <div class="">
-        <a href="/profile/calendar/@{{device.id}}">
             <div class="panel panel-warning">
                 <div class="panel-heading">
                     <div class="row">
@@ -20,12 +19,10 @@
                     </div>
                 </div>
             </div>
-        </a>
     </div>
         </div>
     <div v-else>
         <div class="">
-            <a href="/profile/calendar/@{{device.id}}">
                 <div v-bind:class="[device.state == 1 && device.res == 1 ? 'panel panel-success' : 'panel panel-danger']">
 
                     <div class="panel-heading">
@@ -52,7 +49,6 @@
                         </div>
                     </div>
                 </div>
-            </a>
         </div>
     </div>
 </div>
