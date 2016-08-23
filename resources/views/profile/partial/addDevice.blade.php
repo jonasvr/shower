@@ -9,7 +9,7 @@
             <div class="form-group {{ $errors->has('device_code') ? ' has-error' : '' }}">
                 {!! Form::label('device_code', 'Device ID', ['class' => 'col-md-3 control-label']) !!}
                 <div class="col-md-9">
-                    {!! Form::text('device_code','', ['class' => 'form-control']) !!}
+                    {!! Form::text('device_code','', ['class' => 'form-control', 'autofocus'=>'autofocus]) !!}
                     @if ($errors->has('device_code'))
                         <span class="help-block">
                                                     <strong>{{ $errors->first('device_code') }}</strong>

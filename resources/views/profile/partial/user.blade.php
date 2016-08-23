@@ -8,7 +8,7 @@
                 <div class="form-group {{ $errors->has('code') ? ' has-error' : '' }}">
                     {!! Form::label('code', 'Koten code', ['class' => 'col-md-3 control-label']) !!}
                     <div class="col-md-9">
-                        {!! Form::text('code','', ['class' => 'form-control']) !!}
+                        {!! Form::text('code','', ['class' => 'form-control', 'autofocus'=>'autofocus]) !!}
                         @if ($errors->has('code'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('code') }}</strong>

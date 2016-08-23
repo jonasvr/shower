@@ -78,22 +78,29 @@ class HomeController extends Controller
         $kot = $this->res->GetUses()
             ->GetKot(Auth::user()->koten_id)
             ->count();
+        $girl = $this->res->GetUses()
+            ->GetKot(Auth::user()->koten_id)->where('users.sex',1)->get();
+        $girl = $girl->count();
+        $perc = 0;
+        if ($girl)
+        {
+            $perc = $girl/$kot*100;
+        }
         $kot_girl =[
-            'total' =>$this->res->GetUses()
-                ->GetKot(Auth::user()->koten_id)
-                ->CountGirl(),
-            'perc' => $this->res->GetUses()
-                    ->GetKot(Auth::user()->koten_id)
-                    ->CountGirl() / $kot * 100,
+            'total' =>$girl,
+            'perc' => $perc,
         ];
 
+        $boy = $this->res->GetUses()
+            ->GetKot(Auth::user()->koten_id)->get();
+        $boy = $boy->count();
+        $perc = 0;
+        if ($boy){
+            $perc = $boy/$kot*100;
+        }
         $kot_boy =[
-            'total' =>$this->res->GetUses()
-                ->GetKot(Auth::user()->koten_id)
-                ->CountBoy(),
-            'perc' => $this->res->GetUses()
-                    ->GetKot(Auth::user()->koten_id)
-                    ->CountBoy() / $kot * 100,
+            'total' => $boy,
+            'perc' => $perc,
         ];
 
         $time_all = $this->device->sum('spend_time');
