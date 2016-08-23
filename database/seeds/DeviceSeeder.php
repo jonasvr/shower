@@ -15,6 +15,7 @@ class DeviceSeeder extends Seeder
         {
             DB::table('devices')->insert([
                 'device_code' => str_random(10),
+                'spend_time' => mt_rand(5, 400),
             ]);
         }
     }
