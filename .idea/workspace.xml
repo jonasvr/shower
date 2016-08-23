@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76cd8095-c8c4-4495-86bf-787c43f5b818" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/StartSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/StartSeeder.php" />
     </list>
     <ignored path="shower.iws" />
@@ -31,8 +30,8 @@
               <file leaf-file-name="StartSeeder.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/database/seeds/StartSeeder.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1224">
-                      <caret line="106" column="11" selection-start-line="89" selection-start-column="8" selection-end-line="106" selection-end-column="11" />
+                    <state relative-caret-position="900">
+                      <caret line="97" column="0" selection-start-line="89" selection-start-column="7" selection-end-line="97" selection-end-column="0" />
                       <folding>
                         <element signature="e#216#463#1#PHP" expanded="false" />
                         <element signature="e#502#749#1#PHP" expanded="false" />
@@ -374,12 +373,12 @@
       <workItem from="1471802375526" duration="4470000" />
       <workItem from="1471861306100" duration="21593000" />
       <workItem from="1471893739957" duration="5731000" />
-      <workItem from="1471938646121" duration="8035000" />
+      <workItem from="1471938646121" duration="8091000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144580000" />
+    <option name="totallyTimeSpent" value="144636000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-1631" width="2902" height="1597" extended-state="6" />
@@ -768,8 +767,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/StartSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="106" column="11" selection-start-line="89" selection-start-column="8" selection-end-line="106" selection-end-column="11" />
+        <state relative-caret-position="900">
+          <caret line="97" column="0" selection-start-line="89" selection-start-column="7" selection-end-line="97" selection-end-column="0" />
           <folding>
             <element signature="e#216#463#1#PHP" expanded="false" />
             <element signature="e#502#749#1#PHP" expanded="false" />
