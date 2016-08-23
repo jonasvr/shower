@@ -24,7 +24,7 @@
         </div>
     @else
         <div class="jumbotron row">
-            <h2>Reserve</h2>
+            <h2>Reservate</h2>
             <hr>
             <div class="col-md-offset-1 col-md-3">
                 @include('calendar.partial.shower')

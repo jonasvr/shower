@@ -48,6 +48,12 @@ class CalendarController extends Controller
     {
         $res = $this->res->where('device_id',$id)->get();
         $device = $this->device->DevicesById($id)->first();
+
+        if($device->koten_id != Auth::user()->koten_id)
+        {
+            return back()->with(['error'=>'This device does not belong to your Kot.']);
+        }
+
         $device = $this->checkReserve($device);
         $events = [];
 
@@ -68,6 +74,7 @@ class CalendarController extends Controller
             'device_id'=>$device->id,
             'koten_id'=>$device->koten_id,
         ]);
+
         return view('calendar.calendar')->with($data);
     }
 

@@ -54,13 +54,13 @@ class CalendarSeeder extends Seeder
             ]);
 
             DB::table('reservaties')->insert([
-                'device_id' => '1',
+                'device_id' => '3',
                 'user_id' => random_int(6,16),
                 'start' => Carbon::create(2016, 8, 17, 8, $i*15, 0)
             ]);
 
             DB::table('reservaties')->insert([
-                'device_id' => '2',
+                'device_id' => '3',
                 'user_id' => random_int(6,16),
                 'start' => Carbon::create(2016, 8, 18, 9, $i*15, 0)
             ]);

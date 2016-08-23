@@ -1,6 +1,6 @@
 @if(count($res))
 <div class="jumbotron row">
-    <h2>Reservations</h2>
+    <h2>Your reservations</h2>
     <hr>
 {{--<div class="col-md-offset-2 col-md-8">--}}
     <div>
