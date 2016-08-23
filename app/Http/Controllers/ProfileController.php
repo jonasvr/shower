@@ -121,29 +121,30 @@ class ProfileController extends Controller
      */
     public function getProfile()
     {
-        $kot = $this->koten->FindKot(Auth::user()->koten_id)
-            ->first();
-        $habitants = $this->user->where('koten_id',Auth::user()->koten_id)
-            ->where('koten_id','<>',0)
-            ->get();
-        $devices=[];
-        if(Auth::user()->koten_id){
-            $devices = $this->device->FindDevices($kot->id)
-                ->get();
-        }
-        $devices = $this->checkReserve($devices);
-        $res = $this->res->GetState()
-            ->get();
-        $data = [
-            'kot' => $kot,
-            'devices' => $devices,
-            'habitants' => $habitants,
-            'res' => $res,
-        ];
-
-        JavaScript::put([
-            'devices' => $devices,
-        ]);
+        dd(Auth::user()->koten_id);
+//        $kot = $this->koten->FindKot(Auth::user()->koten_id)
+//            ->first();
+//        $habitants = $this->user->where('koten_id',Auth::user()->koten_id)
+//            ->where('koten_id','<>',0)
+//            ->get();
+//        $devices=[];
+//        if(Auth::user()->koten_id){
+//            $devices = $this->device->FindDevices($kot->id)
+//                ->get();
+//        }
+//        $devices = $this->checkReserve($devices);
+//        $res = $this->res->GetState()
+//            ->get();
+//        $data = [
+//            'kot' => $kot,
+//            'devices' => $devices,
+//            'habitants' => $habitants,
+//            'res' => $res,
+//        ];
+//
+//        JavaScript::put([
+//            'devices' => $devices,
+//        ]);
 
         return view('profile.profile')->with($data);
     }
