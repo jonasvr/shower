@@ -21,7 +21,7 @@
         <!-- First Featurette -->
         <div class="featurette" id="about">
             <img class="featurette-image img-circle img-responsive pull-right max-height-500 max-width-500" src="/img/layout/bathroom.jpg">
-            <h2 class="featurette-heading">The Shower,
+            <h2 class="featurette-heading">The bathroom,
                 <span class="text-muted">is it free or not?</span>
             </h2>
             <p class="lead"> Don't you find it annoying to get out of bed, getting your shower stuff but not sure if the bathroom is free?</p>
