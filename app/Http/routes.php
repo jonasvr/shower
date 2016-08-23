@@ -14,11 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', 'HomeController@index');
 
-Route::group( [ 'middleware' => ['web'] ], function () {
-    Route::auth();
+Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+Route::group( [ 'middleware' => ['auth'] ], function () {
+
     Route::group(['prefix' => 'info'], function () {
         Route::get('/', ['as' => 'getInfo', 'uses' => 'ProfileController@register']);
         Route::post('/addKot', ['as' => 'addKot', 'uses' => 'KotController@addKot']);
