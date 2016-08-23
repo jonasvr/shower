@@ -96,14 +96,14 @@ class StartSeeder extends Seeder
             'postalcode' => 2000,
         ]);
 
-//        for($i = 0; $i<10; $i++) {
-//            DB::table('users')->insert([
-//                'name' => str_random(10),
-//                'email' => str_random(10) . '@gmail.com',
-//                'password' => bcrypt('secret'),
-//                'sex' => random_int(0,1),
-//                'koten_id' => 2,
-//            ]);
-//        }
+        for($i = 0; $i<10; $i++) {
+            DB::table('users')->insert([
+                'name' => str_random(10),
+                'email' => str_random(10) . '@gmail.com',
+                'password' => bcrypt('secret'),
+                'sex' => random_int(0,1),
+                'koten_id' => 2,
+            ]);
+        }
     }
 }
