@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="76cd8095-c8c4-4495-86bf-787c43f5b818" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/CalendarSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/CalendarSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DeviceSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DeviceSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/stats/partials/shower_all.blade.php" afterPath="$PROJECT_DIR$/resources/views/stats/partials/shower_all.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/stats/partials/shower_kot.blade.php" afterPath="$PROJECT_DIR$/resources/views/stats/partials/shower_kot.blade.php" />
     </list>
     <ignored path="shower.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +33,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalendarSeeder.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CalendarSeeder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/seeds/CalendarSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="709">
@@ -101,7 +96,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseSeeder.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DatabaseSeeder.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -380,12 +375,12 @@
       <workItem from="1471802375526" duration="4470000" />
       <workItem from="1471861306100" duration="21593000" />
       <workItem from="1471893739957" duration="5731000" />
-      <workItem from="1471938646121" duration="7520000" />
+      <workItem from="1471938646121" duration="7793000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144065000" />
+    <option name="totallyTimeSpent" value="144338000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
@@ -705,14 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Reservatie.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -776,6 +763,14 @@
           <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
           <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
           <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
           <folding />
         </state>
       </provider>
