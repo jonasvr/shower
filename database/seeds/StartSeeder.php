@@ -87,27 +87,23 @@ class StartSeeder extends Seeder
             'spend_time' => 0,
         ]);
 
-
-
-
-
-        ////kot2///
-        DB::table('kotens')->insert([
-            'code' => 'KAsdf',
-            'street' => 'plantinkaai',
-            'nr' => 2,
-            'city' => 'Antwerpen',
-            'postalcode' => 2000,
-        ]);
-
-        for($i = 0; $i<10; $i++) {
-            DB::table('users')->insert([
-                'name' => str_random(10),
-                'email' => str_random(10) . '@gmail.com',
-                'password' => bcrypt('secret'),
-                'sex' => random_int(0,1),
-                'koten_id' => 2,
-            ]);
-        }
+//        ////kot2///
+//        DB::table('kotens')->insert([
+//            'code' => 'KAsdf',
+//            'street' => 'plantinkaai',
+//            'nr' => 2,
+//            'city' => 'Antwerpen',
+//            'postalcode' => 2000,
+//        ]);
+//
+//        for($i = 0; $i<10; $i++) {
+//            DB::table('users')->insert([
+//                'name' => str_random(10),
+//                'email' => str_random(10) . '@gmail.com',
+//                'password' => bcrypt('secret'),
+//                'sex' => random_int(0,1),
+//                'koten_id' => 2,
+//            ]);
+//        }
     }
 }
