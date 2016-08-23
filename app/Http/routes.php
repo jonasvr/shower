@@ -59,11 +59,6 @@ Route::group( [ 'middleware' => ['auth'] ], function () {
         Route::post('/edit/', ['as' => 'editDevice', 'uses' => 'KotController@editDevice']);
     });
 
-    Route::group(['prefix' => 'api', 'middleware' => 'api'], function () {
-        Route::get('shower/{device_id}/{state}', 'ApiController@showerGet');
-        Route::get('state/{koten_id}', 'ApiController@changeState');
-        Route::get('calstate/{device_id}', 'ApiController@changecalState');
-    });
 
 
     Route::get('/stats', ['as' => 'stats', 'uses' => 'HomeController@stats']);
@@ -73,4 +68,10 @@ Route::group( [ 'middleware' => ['auth'] ], function () {
     route::get('/mail', function () {
         return view('mail.mailstyle');
     });
+});
+
+Route::group(['prefix' => 'api', 'middleware' => 'api'], function () {
+    Route::get('shower/{device_id}/{state}', 'ApiController@showerGet');
+    Route::get('state/{koten_id}', 'ApiController@changeState');
+    Route::get('calstate/{device_id}', 'ApiController@changecalState');
 });
