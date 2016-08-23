@@ -1,4 +1,4 @@
-@if(count($devices))
+<div class="shower" v-if="length">
 <div class="jumbotron row">
     <h2>Showers</h2>
     <hr>
@@ -71,4 +71,3 @@
     </div>
 </div>
 </div>
-@endif
