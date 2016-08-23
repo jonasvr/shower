@@ -27,6 +27,7 @@
                         </div>
                     </div>
                 </a>
+                <a href="/dashboard/calendar/@{{item.id}}"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>reservate</a>
             </div>
         </div>
         <div v-else>
@@ -62,6 +63,7 @@
                 </div>
             </div>
             </a>
+                <a href="/dashboard/calendar/@{{item.id}}"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Reservate</a>
             </div>
         </div>
 
