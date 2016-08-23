@@ -50,7 +50,7 @@
     padding-right: 5px;
 }
 
-/*.container{*/
-    /*padding-left: 60px;*/
-    /*padding-right: 60px;*/
-/*}*/
+.padding-lr-25{
+    padding-left: 25px;
+    padding-right: 25px;
+}

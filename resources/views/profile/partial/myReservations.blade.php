@@ -7,7 +7,7 @@
     <table class="table table-striped table-hover ">
         <thead>
         <tr>
-            <th>#</th>
+            <th class="hidden-xs">#</th>
             <th>Name</th>
             <th>Date</th>
             <th>Time</th>
@@ -18,7 +18,7 @@
         @foreach($res as $key => $item)
     {{--        {{dd($item)}}--}}
             <tr>
-            <td>{{$key +1}}</td>
+            <td  class="hidden-xs">{{$key +1}}</td>
             <td>{{$item->name}}</td>
             <td>{{ explode(' ', $item->start, 2)[0] }}</td>
             <td>{{ explode(' ', $item->start, 2)[1] }}</td>

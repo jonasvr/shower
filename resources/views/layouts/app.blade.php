@@ -33,7 +33,7 @@
 <body id="app-layout">
 
     @include('layouts.nav')
-    <div class="container">
+    <div class="container padding-lr-25">
         @if (session('success'))
             <div id="success-message" class="alert alert-success">
                 <a class="close-success fa fa-close"></a> {{ session('success') }}
