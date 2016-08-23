@@ -1,5 +1,5 @@
 <div class="col-md-6">
-    <h2> Overall bathroom usage</h2>
+    <h2> Global bathroom usage</h2>
     <hr>
     <div class="col-md-12">
         <div class="progress">

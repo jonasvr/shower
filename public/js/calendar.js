@@ -1,4 +1,5 @@
-var socket = io('192.168.56.101:3000');
+// var socket = io('192.168.56.101:3000');
+var socket = io('37.139.3.121:3000');
 
 console.log(koten_id);
 console.log(device);

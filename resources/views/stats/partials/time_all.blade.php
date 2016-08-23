@@ -1,5 +1,5 @@
 <div class="col-sm-6 col-md-6">
-    <h2>Overall bathroom usage</h2>
+    <h2>Global bathroom usage</h2>
     <hr>
     <div class="col-md-12">
         <div class="panel panel-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Time everybody spent in the bathroom">
