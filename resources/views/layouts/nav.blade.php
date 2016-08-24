@@ -12,7 +12,8 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                kvdt
+                {{--kvdt--}}
+                <img src="/img/layout/logo.png" class="img-responsive max-height-10"></img>
             </a>
         </div>
 

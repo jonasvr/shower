@@ -35,6 +35,11 @@
     max-height: 500px;
 }
 
+.max-height-10{
+    max-height:30px;
+}
+
+
 .max-width-500{
     max-width: 500px;
 }

@@ -42,7 +42,7 @@ class ApiController extends Controller
     {
 
         $device = $this->device->FindDevicesByCode($device_code)->first();
-            if($device->state != 2)
+            if($device->state != 2 && $device->state != $state)
             {
                 if ($device->state == 0)
                 {

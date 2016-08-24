@@ -173,7 +173,7 @@ class KotController extends Controller
             $user->save();
             $this->dispatch(new NotifyAccept($user, $kot->code, false));
             $request->delete();
-            session(['success' => "The user has been deleted to your kot."]);
+            session(['success' => "The user request has been denied."]);
         }else {
             session(['success' => "You can't delete this user."]);
         }

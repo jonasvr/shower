@@ -78,6 +78,7 @@ class HomeController extends Controller
         $kot = $this->res->GetUses()
             ->GetKot(Auth::user()->koten_id)
             ->count();
+//        dd($kot);
         $girl = $this->res->GetUses()
             ->GetKot(Auth::user()->koten_id)->where('users.sex',1)->get();
         $girl = $girl->count();
@@ -92,8 +93,9 @@ class HomeController extends Controller
         ];
 
         $boy = $this->res->GetUses()
-            ->GetKot(Auth::user()->koten_id)->get();
+            ->GetKot(Auth::user()->koten_id)->where('users.sex',0)->get();
         $boy = $boy->count();
+
         $perc = 0;
         if ($boy){
             $perc = $boy/$kot*100;

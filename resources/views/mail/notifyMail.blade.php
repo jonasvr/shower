@@ -88,26 +88,9 @@
 
             <table width="600" align="center" border="0" cellspacing="0" cellpadding="0" bgcolor="#222222" class="wrapper">
                 <tbody>
-                <tr>
-                    <td bgcolor="#e1e6e9">&nbsp;</td>
-                </tr>
-                <!-- Online Version -->
-                <tr>
-                    <td bgcolor="#e1e6e9"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="houdini">
-                            <tbody>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td align="right" style="font-family: Arial, sans-serif; color:#707070; font-size:12px;">No images? <a href="#" target="_blank" style="color:#50C2C8;">Read online</a> version!</td>
-                            </tr>
-                            </tbody>
-                        </table></td>
-                </tr>
-                <tr>
-                    <td bgcolor="#e1e6e9">&nbsp;</td>
-                </tr>
                 <!-- Header Image -->
                 <tr>
-                    <td><img src="{{$message->embed($mainImg)}}" alt="" class="responsive" border="0" style="display: block;"></td>
+                    <td><img src="{{$message->embed($mainImg)}}" alt="" class="responsive" border="0" style="display: block; max-width: 600px;"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
