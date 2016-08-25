@@ -90,7 +90,7 @@
                 <tbody>
                 <!-- Header Image -->
                 <tr>
-                    <td><img src="{{$message->embed($mainImg)}}" alt="" class="responsive" border="0" style="display: block;"></td>
+                    <td><img src="{{$message->embed($mainImg)}}" alt="" class="responsive" border="0" style="display: block; max-width:600px"></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
