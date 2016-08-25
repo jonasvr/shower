@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76cd8095-c8c4-4495-86bf-787c43f5b818" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/mail/awnserMail.blade.php" afterPath="$PROJECT_DIR$/resources/views/mail/awnserMail.blade.php" />
-    </list>
+    <list default="true" id="76cd8095-c8c4-4495-86bf-787c43f5b818" name="Default" comment="" />
     <ignored path="shower.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -419,12 +416,12 @@
       <workItem from="1472069317249" duration="730000" />
       <workItem from="1472077069624" duration="24000" />
       <workItem from="1472107056452" duration="1229000" />
-      <workItem from="1472113778060" duration="134000" />
+      <workItem from="1472113778060" duration="579000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170000000" />
+    <option name="totallyTimeSpent" value="170445000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
