@@ -144,8 +144,8 @@ class KotController extends Controller
      */
     public function accept($id)
     {
-        $request = $this->kr->find($id)->first();
-        $kot = $this->koten->find($request->koten_id)->first();
+        $request = $this->kr->where('id',$id)->first();
+        $kot = $this->koten->where('id',$request->koten_id)->first();
         if($this->permission($kot)){
             $user = $this->user->where('id',$request->user_id)->first();
             $user->update(['koten_id' => $kot->id]);
@@ -165,8 +165,8 @@ class KotController extends Controller
      */
     public function decline($id)
     {
-        $request = $this->kr->find($id)->first();
-        $kot = $this->koten->find($request->koten_id)->first();
+        $request = $this->kr->where('id',$id)->first();
+        $kot = $this->koten->where('id',$request->koten_id)->first();
         if($this->permission($kot)) {
             $user = $this->user->find($request->user_id)->first();
             $user->steps = 0;
@@ -175,7 +175,7 @@ class KotController extends Controller
             $request->delete();
             session(['success' => "The user request has been denied."]);
         }else {
-            session(['success' => "You can't delete this user."]);
+            session(['success' => "You don't have permission to decline this user."]);
         }
 
         return back();
