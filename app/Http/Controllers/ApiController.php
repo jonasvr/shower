@@ -100,7 +100,6 @@ class ApiController extends Controller
                     $device['res'] = 0;
                 }
             }
-
        return $device;
     }
 
